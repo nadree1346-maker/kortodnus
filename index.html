@@ -2,454 +2,470 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-<meta name="color-scheme" content="light"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="color-scheme" content="light">
 <title>ขอโทษนะ ♡</title>
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500;1,600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet"/>
 <style>
-/* ============================================================
-   RESET & ROOT TOKENS
-   ============================================================ */
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 :root{
-  /* -- palette -- */
-  --rose:          #c4456e;
-  --rose-deep:      #9c3159;
-  --rose-mid:       #e88bac;
-  --rose-light:     #fbeaf0;
-  --rose-border:    #f0bdd0;
-  --rose-dark:      #7a243e;
-  --blush:          #f4c0d1;
-  --cream:          #fffaf6;
-  --paper:          #fffcf8;
-  --ink:            #5a2040;
-  --text:           #8b3054;
-  --text-soft:      #a8567c;
-  --text-light:     #cba0b6;
-  --text-muted:     #ddb8cb;
-  --gold:           #d9a75c;
-  --white:          #ffffff;
-
-  /* -- type -- */
-  --serif: 'Cormorant Garamond', 'Sarabun', serif;
-  --sans:  'Sarabun', sans-serif;
-
-  /* -- spacing / motion -- */
-  --ease: cubic-bezier(.4,0,.2,1);
-  --safe-t: env(safe-area-inset-top, 0px);
-  --safe-b: env(safe-area-inset-bottom, 0px);
-
-  box-sizing:border-box;
-  padding-top:var(--safe-t);
-  padding-bottom:var(--safe-b);
+  --rose:#c4456e;
+  --rose-light:#fbeaf0;
+  --rose-mid:#e88bac;
+  --rose-border:#f0bdd0;
+  --rose-dark:#7a243e;
+  --text:#8b3054;
+  --text-light:#cba0b6;
+  --text-muted:#ddb8cb;
+  --ink:#5a2040;
+  --paper:#fffcf8;
+  --white:#ffffff;
 }
 
-html{
-  scroll-behavior:smooth;
-  scroll-padding-top:var(--safe-t);
-  color-scheme:light;
-  background:var(--cream);
-}
-body{
-  font-family:var(--sans);
-  overflow-x:hidden;
-  background:var(--cream);
-  color:var(--ink);
-  min-height:100%;
-}
+html{scroll-behavior:smooth;}
+body{font-family:'Sarabun',sans-serif;overflow-x:hidden;}
 
-::selection{background:var(--rose-border);color:var(--rose-dark);}
-
-button{font-family:inherit;}
-img{max-width:100%;display:block;}
-
-/* Reduced-motion respect ------------------------------------- */
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
-}
-
-/* ============================================================
-   AMBIENT BACKGROUND — floating petals & drifting hearts
-   ============================================================ */
+/* ════════════════════════════════
+   FLOATING PETALS
+════════════════════════════════ */
 #petal-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
-.bg-petal{position:absolute;border-radius:50% 0 50% 0;animation:bgfall linear infinite;will-change:transform,opacity;}
+.bg-petal{
+  position:absolute;
+  border-radius:50% 0 50% 0;
+  animation:bgfall linear infinite;
+}
 @keyframes bgfall{
-  0%{transform:translateY(-40px) rotate(0deg);opacity:0;}
-  8%{opacity:.22;}
-  92%{opacity:.16;}
-  100%{transform:translateY(108vh) rotate(600deg);opacity:0;}
-}
-.bg-glow{position:absolute;border-radius:50%;filter:blur(60px);opacity:.35;pointer-events:none;}
-
-/* ============================================================
-   TOP PROGRESS RAIL
-   ============================================================ */
-#top-rail{
-  position:fixed;top:calc(var(--safe-t) + 0px);left:0;right:0;height:2px;
-  background:rgba(196,69,110,.08);z-index:120;
-}
-#top-rail-fill{
-  height:100%;width:0%;
-  background:linear-gradient(90deg,var(--rose-mid),var(--rose));
-  transition:width .15s linear;
+  0%{transform:translateY(-40px) rotate(0deg);opacity:.18;}
+  100%{transform:translateY(105vh) rotate(600deg);opacity:0;}
 }
 
-/* ============================================================
-   SIDE NAVIGATION DOTS
-   ============================================================ */
+/* ════════════════════════════════
+   NAV DOTS
+════════════════════════════════ */
 #nav{
-  position:fixed;right:16px;top:50%;transform:translateY(-50%);
-  z-index:90;display:flex;flex-direction:column;gap:12px;
-  padding-top:var(--safe-t);padding-bottom:var(--safe-b);
+  position:fixed;right:18px;top:50%;
+  transform:translateY(-50%);
+  z-index:90;
+  display:flex;flex-direction:column;gap:10px;
 }
 .nav-dot{
-  position:relative;
   width:6px;height:6px;border-radius:50%;
   background:var(--rose-border);
-  cursor:pointer;transition:all .35s var(--ease);
+  cursor:pointer;transition:all .35s;
   border:none;padding:0;
 }
-.nav-dot.active{background:var(--rose);height:24px;border-radius:3px;}
-.nav-dot .nav-label{
-  position:absolute;right:16px;top:50%;transform:translateY(-50%) translateX(4px);
-  font-size:10px;letter-spacing:.12em;color:var(--text-soft);
-  white-space:nowrap;opacity:0;transition:opacity .25s,transform .25s;
-  background:var(--white);padding:3px 9px;border-radius:20px;
-  border:1px solid var(--rose-border);pointer-events:none;
-}
-.nav-dot:hover .nav-label{opacity:1;transform:translateY(-50%) translateX(0);}
+.nav-dot.active{background:var(--rose);height:22px;border-radius:3px;}
 
-@media (max-width:640px){
-  #nav{right:10px;gap:9px;}
-  .nav-label{display:none;}
-}
-
-/* ============================================================
-   AMBIENCE TOGGLE
-   ============================================================ */
-#ambience-btn{
-  position:fixed;left:18px;
-  top:calc(18px + var(--safe-t));
-  z-index:95;
-  width:42px;height:42px;border-radius:50%;
-  background:var(--white);border:1px solid var(--rose-border);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;box-shadow:0 4px 16px rgba(196,69,110,.12);
-  transition:transform .2s var(--ease),background .2s;
-}
-#ambience-btn:hover{transform:scale(1.06);}
-#ambience-btn svg{width:18px;height:18px;stroke:var(--rose);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
-#ambience-btn.playing{background:var(--rose-light);}
-#ambience-btn .wave{opacity:0;transition:opacity .2s;}
-#ambience-btn.playing .wave{opacity:1;}
-
-/* ============================================================
-   SHARED SECTION LAYOUT
-   ============================================================ */
+/* ════════════════════════════════
+   SECTIONS BASE
+════════════════════════════════ */
 section{
   min-height:100vh;width:100%;
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
-  padding:calc(4rem + var(--safe-t)) 1.4rem calc(4rem + var(--safe-b));
+  padding:4rem 1.5rem;
   position:relative;z-index:1;
 }
 
-.eyebrow-mark{
-  display:flex;align-items:center;gap:10px;margin-bottom:1.4rem;
-  animation:fadein .9s var(--ease) both;
-}
-.eyebrow-mark .ln{width:26px;height:.5px;background:var(--rose-border);}
-.eyebrow-mark .tx{font-size:11px;letter-spacing:.32em;color:var(--text-muted);}
-
-.scroll-cue{
-  display:flex;flex-direction:column;align-items:center;gap:6px;
-  color:var(--text-muted);font-size:10px;
-  letter-spacing:.3em;
-  margin-top:2.4rem;cursor:pointer;
-  animation:nudge 2.4s ease-in-out infinite;
-  background:none;border:none;
-}
-.scroll-cue svg{width:14px;height:14px;stroke:var(--rose-border);fill:none;stroke-width:1.5;stroke-linecap:round;}
-@keyframes nudge{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
-@keyframes fadein{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
-@keyframes pop{0%{transform:scale(.5);opacity:0}70%{transform:scale(1.12);}100%{transform:scale(1);opacity:1;}}
-
-/* ============================================================
+/* ════════════════════════════════
    SEC 1 — ENVELOPE
-   ============================================================ */
-#sec-envelope{background:linear-gradient(135deg,#fdf0f5 0%,#fff5f9 45%,#fef0f6 100%);}
+════════════════════════════════ */
+#sec1{
+  background:linear-gradient(135deg,#fdf0f5 0%,#fff5f9 50%,#fef0f6 100%);
+}
 
 .hint-text{
   font-size:11px;letter-spacing:.4em;color:var(--text-muted);
+  text-transform:uppercase;
   margin-bottom:2rem;
-  animation:fadein 1.4s var(--ease) .3s both;
+  animation:fadein 1.5s ease .4s both;
   transition:opacity .4s;
 }
 
-.env-scene{perspective:1300px;cursor:pointer;display:flex;flex-direction:column;align-items:center;}
+.env-scene{
+  perspective:1300px;
+  cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;
+}
 
 .envelope{
-  width:min(340px,80vw);height:220px;position:relative;
-  transform-style:preserve-3d;transition:transform .12s ease;
-  animation:fadein 1s var(--ease) both;
+  width:340px;height:220px;
+  position:relative;
+  transform-style:preserve-3d;
+  transition:transform .12s ease;
+  animation:fadein 1s ease both;
 }
 
 .env-back{
-  width:100%;height:220px;background:#fef8fa;
-  border:1px solid var(--rose-border);border-radius:4px;
-  position:absolute;top:0;left:0;overflow:hidden;
+  width:340px;height:220px;
+  background:#fef8fa;
+  border:1px solid var(--rose-border);
+  border-radius:4px;
+  position:absolute;top:0;left:0;
+  overflow:hidden;
 }
 .env-back::before{
   content:'';position:absolute;inset:0;
-  background:repeating-linear-gradient(-45deg,transparent,transparent 6px,rgba(237,147,177,.08) 6px,rgba(237,147,177,.08) 7px);
+  background:repeating-linear-gradient(
+    -45deg,
+    transparent,transparent 6px,
+    rgba(237,147,177,.08) 6px,rgba(237,147,177,.08) 7px
+  );
 }
 
-.env-left{position:absolute;left:0;bottom:0;width:0;height:0;border-bottom:110px solid #fbeaf0;border-right:50% solid transparent;z-index:2;filter:drop-shadow(1px 0 0 #f0bdd0);}
-.env-right{position:absolute;right:0;bottom:0;width:0;height:0;border-bottom:110px solid #f4c0d1;border-left:50% solid transparent;z-index:2;}
-.env-bottom-tri{position:absolute;bottom:0;left:0;width:0;height:0;border-bottom:80px solid #fde4ee;border-right:50% solid transparent;border-left:50% solid transparent;z-index:3;filter:drop-shadow(0 -1px 0 #f0bdd0);}
+.env-left{
+  position:absolute;left:0;bottom:0;
+  width:0;height:0;
+  border-bottom:110px solid #fbeaf0;
+  border-right:170px solid transparent;
+  z-index:2;
+  filter:drop-shadow(1px 0 0 #f0bdd0);
+}
+.env-right{
+  position:absolute;right:0;bottom:0;
+  width:0;height:0;
+  border-bottom:110px solid #f4c0d1;
+  border-left:170px solid transparent;
+  z-index:2;
+}
+.env-bottom-tri{
+  position:absolute;bottom:0;left:0;
+  width:0;height:0;
+  border-bottom:80px solid #fde4ee;
+  border-right:170px solid transparent;
+  border-left:170px solid transparent;
+  z-index:3;
+  filter:drop-shadow(0 -1px 0 #f0bdd0);
+}
 
-.env-flap-wrap{position:absolute;top:0;left:0;width:100%;transform-origin:top center;transform-style:preserve-3d;transition:transform .95s var(--ease);z-index:10;}
+.env-flap-wrap{
+  position:absolute;top:0;left:0;width:340px;
+  transform-origin:top center;
+  transform-style:preserve-3d;
+  transition:transform .95s cubic-bezier(.4,0,.2,1);
+  z-index:10;
+}
 .env-flap-wrap.open{transform:rotateX(185deg);}
-.env-flap-tri{width:0;height:0;border-left:50% solid transparent;border-right:50% solid transparent;border-top:108px solid #fce8f0;filter:drop-shadow(0 2px 0 #f0bdd0);margin:0 auto;}
+.env-flap-tri{
+  width:0;height:0;
+  border-left:170px solid transparent;
+  border-right:170px solid transparent;
+  border-top:108px solid #fce8f0;
+  filter:drop-shadow(0 2px 0 #f0bdd0);
+}
 
 .stamp{
-  position:absolute;top:14px;right:5%;width:38px;height:48px;
-  background:var(--rose-light);border:1px solid var(--rose-border);border-radius:2px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
-  box-shadow:inset 0 0 0 2px rgba(255,255,255,.6);z-index:9;font-size:16px;
+  position:absolute;top:14px;right:18px;
+  width:38px;height:48px;
+  background:var(--rose-light);
+  border:1px solid var(--rose-border);
+  border-radius:2px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:3px;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.6);
+  z-index:9;font-size:16px;
 }
 .stamp-line{width:22px;height:.5px;background:var(--rose-border);}
 .stamp-line2{width:14px;height:.5px;background:var(--rose-border);}
 
 .postmark{
-  position:absolute;top:12px;right:calc(5% + 44px);width:42px;height:42px;
-  border:1px dashed var(--rose-border);border-radius:50%;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+  position:absolute;top:12px;right:62px;
+  width:42px;height:42px;
+  border:1px dashed var(--rose-border);
+  border-radius:50%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:1px;
   z-index:9;opacity:.7;
 }
-.postmark-text{font-size:7px;letter-spacing:.15em;color:var(--text-light);text-transform:uppercase;}
+.postmark-text{
+  font-size:7px;letter-spacing:.15em;
+  color:var(--text-light);text-transform:uppercase;
+}
 .postmark-line{width:28px;height:.5px;background:var(--rose-border);}
 
-.addr{position:absolute;bottom:28px;left:7%;display:flex;flex-direction:column;gap:5px;z-index:5;}
+.addr{
+  position:absolute;bottom:28px;left:24px;
+  display:flex;flex-direction:column;gap:5px;z-index:5;
+}
 .addr-line{height:1px;background:var(--rose-border);border-radius:1px;}
 
 .seal{
-  position:absolute;top:82px;left:50%;transform:translateX(-50%);
+  position:absolute;top:82px;left:50%;
+  transform:translateX(-50%);
   width:52px;height:52px;border-radius:50%;
   background:linear-gradient(135deg,var(--rose),var(--rose-mid));
   border:2.5px solid rgba(255,255,255,.7);
   display:flex;align-items:center;justify-content:center;
-  font-size:22px;color:#fff;font-family:var(--serif);font-style:italic;
-  z-index:8;animation:sealpulse 3s ease-in-out infinite;
+  font-size:22px;color:#fff;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  z-index:8;
+  animation:sealpulse 3s ease-in-out infinite;
   transition:opacity .45s,transform .45s;
 }
-@keyframes sealpulse{0%,100%{box-shadow:0 0 0 0 rgba(196,69,110,.28);}50%{box-shadow:0 0 0 10px rgba(196,69,110,0);}}
+@keyframes sealpulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(196,69,110,.28);}
+  50%{box-shadow:0 0 0 10px rgba(196,69,110,0);}
+}
 
 .letter-peek{
-  position:absolute;bottom:0;left:50%;width:88%;
-  background:#fffcf8;border:1px solid #e8d5c4;border-radius:2px 2px 0 0;
-  padding:14px 18px 10px;z-index:4;
+  position:absolute;bottom:0;left:50%;
+  width:300px;
+  background:#fffcf8;
+  border:1px solid #e8d5c4;
+  border-radius:2px 2px 0 0;
+  padding:14px 18px 10px;
+  z-index:4;
   transform:translateX(-50%) translateY(0);
-  transition:transform .95s var(--ease);
+  transition:transform .95s cubic-bezier(.4,0,.2,1);
   box-shadow:0 -2px 12px rgba(196,69,110,.06);
 }
 .letter-peek.risen{transform:translateX(-50%) translateY(-90px);}
-.peek-salute{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--rose);margin-bottom:8px;letter-spacing:.05em;}
+.peek-salute{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:13px;color:var(--rose);
+  margin-bottom:8px;letter-spacing:.05em;
+}
 .peek-lines{display:flex;flex-direction:column;gap:7px;}
 .peek-line{height:1px;background:rgba(196,69,110,.12);border-radius:1px;}
 
-.env-shadow{width:78%;max-width:280px;height:16px;background:radial-gradient(ellipse,rgba(196,69,110,.13) 0%,transparent 70%);margin-top:4px;}
+.env-shadow{
+  width:280px;height:16px;
+  background:radial-gradient(ellipse,rgba(196,69,110,.13) 0%,transparent 70%);
+  margin-top:4px;
+}
 
-.deco-line{display:flex;align-items:center;gap:12px;margin-top:1.6rem;}
+.deco-line{
+  display:flex;align-items:center;gap:12px;
+  margin-top:1.6rem;
+}
 .deco-seg{flex:1;max-width:70px;height:.5px;background:var(--rose-border);}
 .deco-heart{font-size:13px;color:var(--rose-mid);}
 
-.env-subtitle{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--text-muted);letter-spacing:.08em;margin-top:.5rem;transition:opacity .4s;text-align:center;}
+.env-subtitle{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:14px;color:var(--text-muted);letter-spacing:.08em;
+  margin-top:.5rem;
+  transition:opacity .4s;
+}
 
-/* ============================================================
+.scroll-cue{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  color:var(--text-muted);font-size:10px;
+  letter-spacing:.3em;text-transform:uppercase;
+  margin-top:2rem;cursor:pointer;
+  animation:nudge 2.4s ease-in-out infinite;
+}
+.scroll-cue svg{
+  width:14px;height:14px;stroke:var(--rose-border);
+  fill:none;stroke-width:1.5;stroke-linecap:round;
+}
+@keyframes nudge{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(5px);}
+}
+
+/* ════════════════════════════════
    SEC 2 — LETTER
-   ============================================================ */
-#sec-letter{background:linear-gradient(160deg,#fff8f2 0%,#fef2f6 100%);}
+════════════════════════════════ */
+#sec2{
+  background:linear-gradient(160deg,#fff8f2 0%,#fef2f6 100%);
+}
 
-.letter-scene{width:min(460px,94vw);display:flex;flex-direction:column;align-items:center;}
+.letter-scene{
+  width:min(440px,94vw);
+  display:flex;flex-direction:column;align-items:center;
+}
 
 .letter-paper{
-  width:100%;background:var(--paper);border:.5px solid #e8d5c4;border-bottom:none;
-  border-radius:4px 4px 0 0;position:relative;overflow:hidden;
-  padding:2.2rem 1.9rem 2rem clamp(1.6rem,6vw,3.8rem);
+  width:100%;
+  background:var(--paper);
+  border:0.5px solid #e8d5c4;
+  border-bottom:none;
+  border-radius:4px 4px 0 0;
+  position:relative;
+  overflow:hidden;
+  padding:2.4rem 2.6rem 2.2rem 3.8rem;
 }
 .letter-paper::before{
   content:'';position:absolute;inset:0;top:68px;
-  background:repeating-linear-gradient(transparent,transparent 31px,rgba(196,69,110,.055) 31px,rgba(196,69,110,.055) 32px);
+  background:repeating-linear-gradient(
+    transparent,transparent 31px,
+    rgba(196,69,110,.055) 31px,rgba(196,69,110,.055) 32px
+  );
   pointer-events:none;
 }
-.letter-paper::after{content:'';position:absolute;left:clamp(1.15rem,4.4vw,56px);top:0;bottom:0;border-left:1px solid rgba(196,69,110,.14);pointer-events:none;}
+.letter-paper::after{
+  content:'';position:absolute;left:56px;top:0;bottom:0;
+  border-left:1px solid rgba(196,69,110,.14);
+  pointer-events:none;
+}
 
-.corner-deco{position:absolute;top:16px;right:20px;width:34px;height:34px;opacity:.15;}
+.corner-deco{
+  position:absolute;top:16px;right:20px;
+  width:34px;height:34px;opacity:.15;
+}
 .corner-deco svg{width:100%;height:100%;}
 
-.letter-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.8rem;gap:1rem;}
-.letter-to{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--rose);letter-spacing:.06em;line-height:1.6;}
-.letter-date{font-size:10.5px;color:var(--text-muted);letter-spacing:.14em;margin-top:40px;text-align:right;white-space:nowrap;}
+.letter-header{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:1.8rem;
+}
+.letter-to{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:17px;color:var(--rose);letter-spacing:.06em;line-height:1.6;
+}
+.letter-date{
+  font-size:10.5px;color:var(--text-muted);
+  letter-spacing:.14em;text-transform:uppercase;
+  margin-top:40px;text-align:right;
+}
 
 .letter-body{min-height:260px;position:relative;}
-.letter-line{font-size:14.5px;line-height:2.14;color:var(--ink);opacity:0;transform:translateY(5px);transition:opacity .6s ease,transform .6s ease;}
+
+.letter-line{
+  font-size:14.5px;line-height:2.14;color:var(--ink);
+  opacity:0;transform:translateY(5px);
+  transition:opacity .6s ease,transform .6s ease;
+}
 .letter-line.show{opacity:1;transform:translateY(0);}
-.letter-line.italic-line{font-family:var(--serif);font-style:italic;font-size:16.5px;color:var(--rose);line-height:2.0;}
+.letter-line.italic-line{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:16.5px;color:var(--rose);line-height:2.0;
+}
 .letter-line.space{margin-top:.45rem;}
 
-.cursor{display:inline-block;width:1.5px;height:.9em;background:var(--rose-mid);margin-left:2px;vertical-align:middle;border-radius:1px;animation:blink .85s step-end infinite;}
+.cursor{
+  display:inline-block;width:1.5px;height:.9em;
+  background:var(--rose-mid);margin-left:2px;
+  vertical-align:middle;border-radius:1px;
+  animation:blink .85s step-end infinite;
+}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
 
-.letter-sig{margin-top:1.6rem;opacity:0;transition:opacity .9s ease;}
+.letter-sig{
+  margin-top:1.6rem;
+  opacity:0;transition:opacity .9s ease;
+}
 .letter-sig.show{opacity:1;}
-.sig-name{font-family:var(--serif);font-style:italic;font-size:24px;color:var(--rose);letter-spacing:.04em;line-height:1.3;}
+.sig-name{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:24px;color:var(--rose);letter-spacing:.04em;line-height:1.3;
+}
 .sig-under{width:80px;height:.5px;background:var(--rose-border);margin-top:4px;}
 .sig-sub{font-size:11px;color:var(--text-muted);margin-top:5px;letter-spacing:.12em;}
 
-.wax-deco{position:absolute;bottom:18px;right:22px;font-size:18px;opacity:.12;transform:rotate(12deg);}
+.wax-deco{
+  position:absolute;bottom:18px;right:22px;
+  font-size:18px;opacity:.12;transform:rotate(12deg);
+}
 
-.letter-fold{width:100%;height:3px;background:linear-gradient(180deg,rgba(196,69,110,.06) 0%,rgba(196,69,110,.01) 100%);border-left:.5px solid var(--rose-border);border-right:.5px solid var(--rose-border);}
-.letter-fold::after{content:'';display:block;margin-top:1px;height:.5px;background:var(--rose-border);}
+.letter-fold{
+  width:100%;height:3px;
+  background:linear-gradient(180deg,rgba(196,69,110,.06) 0%,rgba(196,69,110,.01) 100%);
+  border-left:0.5px solid var(--rose-border);
+  border-right:0.5px solid var(--rose-border);
+}
+.letter-fold::after{
+  content:'';display:block;margin-top:1px;height:.5px;background:var(--rose-border);
+}
 
-.letter-base{width:96%;height:22px;background:linear-gradient(135deg,#fbeaf0,#f4c0d1);border:.5px solid var(--rose-border);border-top:none;border-radius:0 0 8px 8px;box-shadow:0 4px 18px rgba(196,69,110,.08);}
+.letter-base{
+  width:96%;height:22px;
+  background:linear-gradient(135deg,#fbeaf0,#f4c0d1);
+  border:0.5px solid var(--rose-border);border-top:none;
+  border-radius:0 0 8px 8px;
+  box-shadow:0 4px 18px rgba(196,69,110,.08);
+}
 
 .letter-btns{margin-top:1.6rem;display:flex;gap:12px;}
-.btn-ghost{
-  background:var(--white);border:.5px solid var(--rose-border);color:var(--text);
-  border-radius:30px;padding:9px 26px;font-family:var(--sans);font-size:12px;
+.btn-replay{
+  background:var(--white);border:0.5px solid var(--rose-border);
+  color:var(--text);border-radius:30px;
+  padding:9px 26px;
+  font-family:'Sarabun',sans-serif;font-size:12px;
   cursor:pointer;letter-spacing:.08em;transition:background .2s;
 }
-.btn-ghost:hover{background:var(--rose-light);}
+.btn-replay:hover{background:var(--rose-light);}
 
-/* ============================================================
-   SEC 3 — MEMORY LANE (timeline)
-   ============================================================ */
-#sec-memories{background:linear-gradient(165deg,#fff5f8 0%,#fdeef4 55%,#fff7f4 100%);}
+/* ════════════════════════════════
+   SEC 3 — ORIGINAL
+════════════════════════════════ */
+#sec3{background:linear-gradient(160deg,#fbeaf0 0%,#fff5f8 50%,#fbeaf0 100%);}
 
-.mem-head{text-align:center;margin-bottom:2.6rem;max-width:480px;}
-.mem-title{font-family:var(--serif);font-style:italic;font-size:clamp(24px,5vw,30px);color:var(--rose-dark);letter-spacing:.02em;line-height:1.4;}
-.mem-sub{font-size:12.5px;color:var(--text-light);margin-top:.6rem;line-height:1.8;}
-
-.timeline{width:min(560px,94vw);position:relative;padding-left:26px;}
-.timeline::before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,var(--rose-border),var(--blush),var(--rose-border));}
-
-.tl-item{position:relative;padding-bottom:2.4rem;opacity:0;transform:translateX(-10px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
-.tl-item.show{opacity:1;transform:translateX(0);}
-.tl-item:last-child{padding-bottom:0;}
-.tl-dot{
-  position:absolute;left:-26px;top:2px;width:13px;height:13px;border-radius:50%;
-  background:var(--white);border:2px solid var(--rose-mid);
-  display:flex;align-items:center;justify-content:center;font-size:7px;
+.card-wrapper{
+  width:min(330px,90vw);display:flex;flex-direction:column;
+  align-items:stretch;box-shadow:0 8px 40px rgba(212,83,126,.13);
+  border-radius:20px;overflow:visible;
 }
-.tl-card{
-  background:var(--white);border:1px solid var(--rose-border);border-radius:14px;
-  padding:1rem 1.2rem;box-shadow:0 6px 22px rgba(196,69,110,.06);
+.scene{
+  width:100%;height:160px;position:relative;
+  background:linear-gradient(160deg,#fff0f5 0%,#fde8f0 100%);
+  border:0.5px solid var(--rose-border);border-bottom:none;
+  border-radius:20px 20px 0 0;overflow:visible;
 }
-.tl-tag{font-size:10px;letter-spacing:.14em;color:var(--rose-mid);margin-bottom:.35rem;}
-.tl-text{font-size:14px;line-height:1.75;color:var(--ink);}
-.tl-note{font-size:11.5px;color:var(--text-light);margin-top:.5rem;font-style:italic;font-family:var(--serif);}
-
-.mem-editnote{
-  margin-top:2rem;font-size:11px;color:var(--text-light);text-align:center;
-  border:1px dashed var(--rose-border);border-radius:10px;padding:.7rem 1rem;
-  max-width:420px;line-height:1.7;
+.char{position:absolute;bottom:0;display:flex;flex-direction:column;align-items:center;transition:left .9s cubic-bezier(.4,0,.2,1),right .9s cubic-bezier(.4,0,.2,1);}
+.char-l{left:6px;}.char-r{right:6px;}
+.speech-bubble{
+  position:absolute;top:-44px;
+  background:var(--white);border-radius:10px;
+  padding:5px 10px;font-size:11px;color:var(--text);font-weight:500;
+  white-space:nowrap;border:0.5px solid var(--rose-border);
+  opacity:0;transition:opacity .5s;pointer-events:none;
+  box-shadow:0 2px 12px rgba(212,83,126,.08);
 }
-
-/* ============================================================
-   SEC 4 — PROMISES CHECKLIST
-   ============================================================ */
-#sec-promises{background:linear-gradient(160deg,#fef2f5 0%,#fbeaf0 100%);}
-
-.promise-card{width:min(440px,92vw);background:var(--white);border:1px solid var(--rose-border);border-radius:22px;padding:2rem 1.7rem;box-shadow:0 12px 42px rgba(196,69,110,.1);}
-.promise-title{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--rose-dark);text-align:center;margin-bottom:.4rem;}
-.promise-sub{font-size:12px;color:var(--text-light);text-align:center;margin-bottom:1.6rem;line-height:1.7;}
-
-.promise-list{display:flex;flex-direction:column;gap:.65rem;}
-.p-item{
-  display:flex;align-items:flex-start;gap:.75rem;
-  background:var(--rose-light);border:1px solid transparent;border-radius:14px;
-  padding:.8rem .95rem;cursor:pointer;transition:background .25s,border-color .25s,transform .15s;
-  user-select:none;
-}
-.p-item:hover{transform:translateY(-1px);}
-.p-item.checked{background:#fff;border-color:var(--rose-border);}
-.p-box{
-  flex:0 0 auto;width:19px;height:19px;border-radius:6px;margin-top:1px;
-  border:1.4px solid var(--rose-mid);display:flex;align-items:center;justify-content:center;
-  transition:background .2s,border-color .2s;
-}
-.p-item.checked .p-box{background:var(--rose);border-color:var(--rose);}
-.p-box svg{width:11px;height:11px;stroke:#fff;stroke-width:2.4;fill:none;opacity:0;transition:opacity .15s;}
-.p-item.checked .p-box svg{opacity:1;}
-.p-text{font-size:13.5px;line-height:1.65;color:var(--ink);transition:color .2s,opacity .2s;}
-.p-item.checked .p-text{color:var(--text-light);opacity:.75;}
-
-.promise-progress{margin-top:1.4rem;height:5px;border-radius:5px;background:var(--rose-light);overflow:hidden;}
-.promise-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--rose-mid),var(--rose));transition:width .4s var(--ease);}
-.promise-count{text-align:center;font-size:11px;color:var(--text-muted);margin-top:.5rem;letter-spacing:.06em;}
-
-.promise-done{
-  text-align:center;margin-top:1.4rem;opacity:0;max-height:0;overflow:hidden;
-  transition:opacity .5s,max-height .5s;
-}
-.promise-done.show{opacity:1;max-height:200px;}
-.promise-done-icon{font-size:30px;animation:pop .5s var(--ease);}
-.promise-done-text{font-family:var(--serif);font-style:italic;color:var(--rose);font-size:15px;margin-top:.5rem;}
-
-/* ============================================================
-   SEC 5 — APOLOGY DIALOGUE (SVG characters)
-   ============================================================ */
-#sec-apology{background:linear-gradient(160deg,#fbeaf0 0%,#fff5f8 50%,#fbeaf0 100%);}
-
-.card-wrapper{width:min(340px,92vw);display:flex;flex-direction:column;align-items:stretch;box-shadow:0 8px 40px rgba(212,83,126,.13);border-radius:20px;overflow:visible;}
-.scene{width:100%;height:170px;position:relative;background:linear-gradient(160deg,#fff0f5 0%,#fde8f0 100%);border:.5px solid var(--rose-border);border-bottom:none;border-radius:20px 20px 0 0;overflow:visible;}
-.char{position:absolute;bottom:10px;display:flex;flex-direction:column;align-items:center;transition:left .9s var(--ease),right .9s var(--ease);}
-.char-l{left:6px;}
-.char-r{right:6px;}
-.char svg{width:74px;height:86px;filter:drop-shadow(0 6px 10px rgba(196,69,110,.18));}
-.char.bounce{animation:charbounce .6s var(--ease);}
-@keyframes charbounce{0%,100%{transform:translateY(0);}40%{transform:translateY(-8px);}}
-
-.speech-bubble{position:absolute;top:-46px;background:var(--white);border-radius:10px;padding:5px 10px;font-size:11px;color:var(--text);font-weight:500;white-space:nowrap;border:.5px solid var(--rose-border);opacity:0;transition:opacity .5s;pointer-events:none;box-shadow:0 2px 12px rgba(212,83,126,.08);left:50%;transform:translateX(-50%);}
 .speech-bubble::after{content:'';position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid var(--white);}
 .speech-bubble.show{opacity:1;}
-
 .hearts-zone{position:absolute;top:10px;left:50%;transform:translateX(-50%);pointer-events:none;}
 .heart-up{position:absolute;font-size:16px;animation:heartrise 1.5s ease forwards;opacity:0;}
 @keyframes heartrise{0%{opacity:0;transform:translateY(0) scale(.3);}30%{opacity:1;}100%{opacity:0;transform:translateY(-65px) scale(1.2);}}
-
-.icard{background:var(--white);border:.5px solid var(--rose-border);border-top:none;border-radius:0 0 20px 20px;padding:1.6rem 1.6rem 1.5rem;text-align:center;}
+.icard{
+  background:var(--white);border:0.5px solid var(--rose-border);
+  border-top:none;border-radius:0 0 20px 20px;
+  padding:1.6rem 1.6rem 1.5rem;text-align:center;
+}
 .step-dots{display:flex;gap:6px;justify-content:center;margin-bottom:1.2rem;}
 .step-dot{width:6px;height:6px;border-radius:50%;background:var(--rose-border);transition:all .35s;}
 .step-dot.active{background:var(--rose);width:20px;border-radius:3px;}
 .card-msg{font-size:16px;font-weight:500;color:var(--text);margin-bottom:1.5rem;line-height:1.7;}
 .card-btns{display:flex;gap:12px;justify-content:center;}
-.btn-yes{flex:1;padding:13px;border-radius:50px;border:none;background:linear-gradient(135deg,var(--rose),var(--rose-mid));color:white;font-family:var(--sans);font-size:14px;font-weight:500;cursor:pointer;transition:transform .15s,opacity .2s;letter-spacing:.04em;}
+.btn-yes{
+  flex:1;padding:13px;border-radius:50px;border:none;
+  background:linear-gradient(135deg,var(--rose),var(--rose-mid));
+  color:white;font-family:'Sarabun',sans-serif;font-size:14px;font-weight:500;
+  cursor:pointer;transition:transform .15s,opacity .2s;letter-spacing:.04em;
+}
 .btn-yes:hover{opacity:.9;transform:scale(1.02);}
-.btn-no{flex:1;padding:13px;border-radius:50px;border:.5px solid var(--rose-border);background:var(--rose-light);color:var(--text-muted);font-family:var(--sans);font-size:14px;font-weight:400;cursor:pointer;transition:all .2s;letter-spacing:.04em;}
+.btn-no{
+  flex:1;padding:13px;border-radius:50px;
+  border:0.5px solid var(--rose-border);background:var(--rose-light);
+  color:var(--text-muted);font-family:'Sarabun',sans-serif;
+  font-size:14px;font-weight:400;cursor:pointer;transition:all .2s;letter-spacing:.04em;
+}
 .btn-no:hover{background:var(--rose-border);}
+.final-card{text-align:center;padding:.5rem 0;}
+.final-big{font-size:44px;animation:pop .55s cubic-bezier(.4,0,.2,1);}
+.final-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--rose);margin:.6rem 0 .4rem;letter-spacing:.04em;}
+.final-sub{font-size:13px;color:var(--text-light);line-height:2.1;font-weight:300;}
+@keyframes pop{0%{transform:scale(.5);opacity:0}70%{transform:scale(1.12);}100%{transform:scale(1);opacity:1;}}
 
-/* ============================================================
-   SEC 6 — FINALE
-   ============================================================ */
-#sec-finale{background:linear-gradient(170deg,#fff8f4 0%,#fdeef4 60%,#fbeaf0 100%);}
-.final-wrapper{width:min(420px,92vw);text-align:center;}
-.final-big{font-size:50px;animation:pop .6s var(--ease);}
-.final-title{font-family:var(--serif);font-style:italic;font-size:clamp(24px,6vw,30px);color:var(--rose);margin:.7rem 0 .6rem;letter-spacing:.03em;}
-.final-sub{font-size:13.5px;color:var(--text-soft);line-height:2.1;font-weight:300;}
-.final-sig{margin-top:1.8rem;font-family:var(--serif);font-style:italic;font-size:19px;color:var(--rose-dark);}
-.final-sig .sig-under{margin:6px auto 0;}
-
-.final-actions{display:flex;justify-content:center;gap:12px;margin-top:2.2rem;flex-wrap:wrap;}
-
-/* ============================================================
-   CONFETTI LAYER
-   ============================================================ */
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:200;overflow:hidden;}
 .conf{position:absolute;animation:conffall linear forwards;}
 @keyframes conffall{0%{opacity:1;transform:translateY(-20px) rotate(0);}100%{opacity:0;transform:translateY(105vh) rotate(720deg);}}
+
+@keyframes fadein{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+}
+
+html {
+  color-scheme: light;
+}  
+  
 </style>
 </head>
 <body>
@@ -457,28 +473,18 @@ section{
 <div id="petal-bg"></div>
 <div id="confetti"></div>
 
-<div id="top-rail"><div id="top-rail-fill"></div></div>
-
-<button id="ambience-btn" aria-label="เปิด/ปิดเสียงบรรยากาศ" onclick="toggleAmbience()">
-  <svg id="icon-mute" viewBox="0 0 24 24"><path d="M9 8H5a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h4l6 5V3l-6 5Z"/><line x1="17" y1="9" x2="22" y2="14"/><line x1="22" y1="9" x2="17" y2="14"/></svg>
-  <svg id="icon-play" class="wave" viewBox="0 0 24 24" style="display:none;"><path d="M9 8H5a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h4l6 5V3l-6 5Z"/><path d="M16.5 9.5a4 4 0 0 1 0 5"/><path d="M19 7a7 7 0 0 1 0 10"/></svg>
-</button>
-
 <div id="nav">
-  <button class="nav-dot active" onclick="scrollToSec(0)"><span class="nav-label">จดหมาย</span></button>
-  <button class="nav-dot" onclick="scrollToSec(1)"><span class="nav-label">อ่านจดหมาย</span></button>
-  <button class="nav-dot" onclick="scrollToSec(2)"><span class="nav-label">ความทรงจำ</span></button>
-  <button class="nav-dot" onclick="scrollToSec(3)"><span class="nav-label">สัญญา</span></button>
-  <button class="nav-dot" onclick="scrollToSec(4)"><span class="nav-label">ขอโทษ</span></button>
-  <button class="nav-dot" onclick="scrollToSec(5)"><span class="nav-label">สุดท้าย</span></button>
+  <button class="nav-dot active" onclick="scrollToSec(0)"></button>
+  <button class="nav-dot" onclick="scrollToSec(1)"></button>
+  <button class="nav-dot" onclick="scrollToSec(2)"></button>
 </div>
 
 <!-- ══════════════════════════════
      SEC 1 : ENVELOPE
 ══════════════════════════════ -->
-<section id="sec-envelope">
+<section id="sec1">
 
-  <p class="hint-text" id="hintText">แตะเพื่อเปิดจดหมาย</p>
+  <p class="hint-text" id="hintText"></p>
 
   <div class="env-scene" id="envScene">
     <div class="envelope" id="env">
@@ -529,23 +535,23 @@ section{
 
   <div class="deco-line">
     <div class="deco-seg"></div>
-    <div class="deco-heart">♡</div>
+    <div class="deco-heart"></div>
     <div class="deco-seg"></div>
   </div>
 
-  <p class="env-subtitle" id="envSubtitle">มีอะไรอยากบอกนุสอยู่ข้างใน</p>
+  <p class="env-subtitle" id="envSubtitle"></p>
 
-  <button class="scroll-cue" onclick="scrollToSec(1)">
+  <div class="scroll-cue" onclick="scrollToSec(1)">
     <span>เลื่อนลง</span>
     <svg viewBox="0 0 14 14"><polyline points="2,4 7,10 12,4"/></svg>
-  </button>
+  </div>
 
 </section>
 
 <!-- ══════════════════════════════
      SEC 2 : LETTER
 ══════════════════════════════ -->
-<section id="sec-letter">
+<section id="sec2">
   <div class="letter-scene">
 
     <div class="letter-paper" id="letterPaper">
@@ -570,7 +576,7 @@ section{
       <div class="letter-sig" id="letterSig">
         <div class="sig-name">ได้มั้ย</div>
         <div class="sig-under"></div>
-        <div class="sig-sub">คนที่อยากดีขึ้นเพื่อนุส</div>
+        <div class="sig-sub"></div>
       </div>
 
       <div class="wax-deco">❧</div>
@@ -581,138 +587,31 @@ section{
     <div class="letter-base"></div>
 
     <div class="letter-btns">
-      <button class="btn-ghost" onclick="restartLetter()">อ่านอีกครั้ง ↺</button>
+      <button class="btn-replay" onclick="restartLetter()">อ่านอีกครั้ง ↺</button>
     </div>
 
   </div>
 
-  <button class="scroll-cue" onclick="scrollToSec(2)" style="margin-top:2rem;">
+  <div class="scroll-cue" onclick="scrollToSec(2)" style="margin-top:2rem;">
     <span>ต่อไป</span>
     <svg viewBox="0 0 14 14"><polyline points="2,4 7,10 12,4"/></svg>
-  </button>
+  </div>
 </section>
 
 <!-- ══════════════════════════════
-     SEC 3 : MEMORY LANE
+     SEC 3 : ORIGINAL CARD
 ══════════════════════════════ -->
-<section id="sec-memories">
-  <div class="eyebrow-mark"><div class="ln"></div><div class="tx">ก่อนจะมาถึงวันนี้</div><div class="ln"></div></div>
-  <div class="mem-head">
-    <div class="mem-title">เรื่องเล็ก ๆ ที่เรายังจำได้</div>
-    <div class="mem-sub">ไม่ใช่ทุกอย่างจะสมบูรณ์แบบ แต่ทุกช่วงที่ผ่านมามีนุสอยู่ในนั้นเสมอ</div>
-  </div>
-
-  <div class="timeline" id="timeline">
-    <div class="tl-item">
-      <div class="tl-dot">✿</div>
-      <div class="tl-card">
-        <div class="tl-tag">จุดเริ่มต้น</div>
-        <div class="tl-text">วันที่เราเริ่มรู้จักกัน ตอนนั้นยังไม่รู้เลยว่านุสจะสำคัญกับเรามากขนาดนี้</div>
-        <div class="tl-note">— แก้เป็นความทรงจำจริงของสองคนได้เลยนะ</div>
-      </div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot">☁</div>
-      <div class="tl-card">
-        <div class="tl-tag">ช่วงเวลาดี ๆ</div>
-        <div class="tl-text">ช่วงที่เราหัวเราะกันได้ทั้งวันโดยไม่ต้องมีเหตุผลอะไรเลย</div>
-      </div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot">⚡</div>
-      <div class="tl-card">
-        <div class="tl-tag">วันที่ไม่ดี</div>
-        <div class="tl-text">วันที่เราทำให้นุสเสียใจ แล้วเราก็รู้ว่าตัวเองยังต้องปรับปรุงอีกมาก</div>
-      </div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot">♡</div>
-      <div class="tl-card">
-        <div class="tl-tag">วันนี้</div>
-        <div class="tl-text">วันที่เราตั้งใจจริง ๆ ว่าจะกลับมาดูแลใจนุสให้ดีกว่าเดิม</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="mem-editnote">💡 ส่วนนี้แก้ไขข้อความในโค้ดให้เป็นความทรงจำจริงของนุสกับเราได้เลย จะยิ่งรู้สึกเป็นเรื่องของเราสองคนมากขึ้น</div>
-
-  <button class="scroll-cue" onclick="scrollToSec(3)" style="margin-top:2.2rem;">
-    <span>ต่อไป</span>
-    <svg viewBox="0 0 14 14"><polyline points="2,4 7,10 12,4"/></svg>
-  </button>
-</section>
-
-<!-- ══════════════════════════════
-     SEC 4 : PROMISES
-══════════════════════════════ -->
-<section id="sec-promises">
-  <div class="eyebrow-mark"><div class="ln"></div><div class="tx">สัญญาจากใจ</div><div class="ln"></div></div>
-
-  <div class="promise-card">
-    <div class="promise-title">ต่อจากนี้ เราจะ...</div>
-    <div class="promise-sub">กดติ๊กทีละข้อ เหมือนที่เราจะค่อย ๆ ทำให้ดูจริง ๆ</div>
-
-    <div class="promise-list" id="promiseList">
-      <div class="p-item" data-i="0"><div class="p-box"><svg viewBox="0 0 24 24"><polyline points="4,13 9,18 20,6"/></svg></div><div class="p-text">ฟังนุสให้มากขึ้น ไม่ด่วนตัดสินก่อนเข้าใจ</div></div>
-      <div class="p-item" data-i="1"><div class="p-box"><svg viewBox="0 0 24 24"><polyline points="4,13 9,18 20,6"/></svg></div><div class="p-text">คิดถึงใจนุสก่อนพูดหรือทำอะไรลงไป</div></div>
-      <div class="p-item" data-i="2"><div class="p-box"><svg viewBox="0 0 24 24"><polyline points="4,13 9,18 20,6"/></svg></div><div class="p-text">ไม่หายไปเงียบ ๆ เวลามีปัญหาอีก</div></div>
-      <div class="p-item" data-i="3"><div class="p-box"><svg viewBox="0 0 24 24"><polyline points="4,13 9,18 20,6"/></svg></div><div class="p-text">ทำให้นุสรู้สึกว่าเป็นคนสำคัญที่สุดจริง ๆ</div></div>
-      <div class="p-item" data-i="4"><div class="p-box"><svg viewBox="0 0 24 24"><polyline points="4,13 9,18 20,6"/></svg></div><div class="p-text">เป็นแฟนที่นุสวางใจได้ ไม่ใช่แค่คำพูด</div></div>
-    </div>
-
-    <div class="promise-progress"><div class="promise-progress-fill" id="promiseFill"></div></div>
-    <div class="promise-count" id="promiseCount">0 / 5 ข้อ</div>
-
-    <div class="promise-done" id="promiseDone">
-      <div class="promise-done-icon">💗</div>
-      <div class="promise-done-text">ครบทุกข้อแล้ว เราจะทำตามที่สัญญาไว้จริง ๆ</div>
-    </div>
-  </div>
-
-  <button class="scroll-cue" onclick="scrollToSec(4)" style="margin-top:2.2rem;">
-    <span>ต่อไป</span>
-    <svg viewBox="0 0 14 14"><polyline points="2,4 7,10 12,4"/></svg>
-  </button>
-</section>
-
-<!-- ══════════════════════════════
-     SEC 5 : APOLOGY DIALOGUE
-══════════════════════════════ -->
-<section id="sec-apology">
-  <div class="eyebrow-mark"><div class="ln"></div><div class="tx">ขอโอกาสอีกครั้ง</div><div class="ln"></div></div>
+<section id="sec3">
   <div class="card-wrapper">
     <div class="scene" id="scene">
-
       <div class="char char-l" id="charL">
         <div class="speech-bubble" id="speechL"></div>
-        <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="50" cy="112" rx="26" ry="6" fill="#c4456e" opacity=".12"/>
-          <path d="M22 118 Q22 78 50 78 Q78 78 78 118Z" fill="#e88bac"/>
-          <circle cx="50" cy="46" r="30" fill="#ffe3ec"/>
-          <path d="M20 42 Q20 8 50 8 Q80 8 80 42 Q80 30 50 30 Q20 30 20 42Z" fill="#7a243e"/>
-          <circle cx="39" cy="48" r="3.4" fill="#5a2040"/>
-          <circle cx="61" cy="48" r="3.4" fill="#5a2040"/>
-          <path d="M40 60 Q50 66 60 60" stroke="#c4456e" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-          <circle cx="30" cy="56" r="4.5" fill="#f4a7bf" opacity=".7"/>
-          <circle cx="70" cy="56" r="4.5" fill="#f4a7bf" opacity=".7"/>
-        </svg>
+        <img src="Nat.png" alt="" width="100px">
       </div>
-
       <div class="char char-r" id="charR">
         <div class="speech-bubble" id="speechR"></div>
-        <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="50" cy="112" rx="26" ry="6" fill="#c4456e" opacity=".12"/>
-          <path d="M22 118 Q22 78 50 78 Q78 78 78 118Z" fill="#c4456e"/>
-          <circle cx="50" cy="46" r="30" fill="#ffe9e6"/>
-          <path d="M18 46 Q14 10 50 8 Q86 10 82 46 Q80 26 50 28 Q20 26 18 46Z" fill="#3d1a2c"/>
-          <path d="M18 44 Q26 30 34 42" stroke="#3d1a2c" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <path d="M82 44 Q74 30 66 42" stroke="#3d1a2c" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <circle cx="39" cy="49" r="3.4" fill="#3d1a2c"/>
-          <circle cx="61" cy="49" r="3.4" fill="#3d1a2c"/>
-          <path d="M41 61 Q50 65 59 61" stroke="#9c3159" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-        </svg>
+        <img src="Nus.png" alt="" width="100px">
       </div>
-
       <div class="hearts-zone" id="heartsZone"></div>
     </div>
     <div class="icard" id="icard">
@@ -724,106 +623,51 @@ section{
       </div>
     </div>
   </div>
-
-  <button class="scroll-cue" onclick="scrollToSec(5)" style="margin-top:2.2rem;">
-    <span>ต่อไป</span>
-    <svg viewBox="0 0 14 14"><polyline points="2,4 7,10 12,4"/></svg>
-  </button>
 </section>
+
+<audio id="bgm" src="r.mp3" loop></audio>
+
 
 <!-- ══════════════════════════════
-     SEC 6 : FINALE
+     SCRIPTS
 ══════════════════════════════ -->
-<section id="sec-finale">
-  <div class="final-wrapper">
-    <div class="final-big">💖</div>
-    <div class="final-title">ขอบคุณที่อยู่ตรงนี้กับเรา</div>
-    <div class="final-sub">ต่อจากนี้เราจะไม่ทำให้นุสต้องมาอ่านจดหมายแบบนี้อีก<br>เราจะทำให้ดูด้วยการกระทำจริง ๆ</div>
-    <div class="final-sig">
-      รักนุสที่สุดเลยย ♡
-      <div class="sig-under"></div>
-    </div>
-    <div class="final-actions">
-      <button class="btn-ghost" onclick="scrollToSec(0)">อ่านใหม่อีกครั้ง ↺</button>
-    </div>
-  </div>
-</section>
-
 <script>
-/* ============================================================
-   PETALS + AMBIENT GLOW
-   ============================================================ */
+/* ── petals ── */
 (function(){
   const bg=document.getElementById('petal-bg');
   const cols=['#f4c0d1','#ed93b1','#fbeaf0','#f4c0d1'];
-  for(let i=0;i<26;i++){
+  for(let i=0;i<24;i++){
     const p=document.createElement('div');p.className='bg-petal';
     const s=Math.random()*8+5;
     p.style.cssText=`width:${s}px;height:${s*1.5}px;background:${cols[~~(Math.random()*cols.length)]};left:${Math.random()*100}%;animation-duration:${Math.random()*12+9}s;animation-delay:${Math.random()*12}s;`;
     bg.appendChild(p);
   }
-  const glowSpots=[{t:'8%',l:'10%',c:'#f4c0d1',s:260},{t:'55%',l:'85%',c:'#fbeaf0',s:320},{t:'80%',l:'15%',c:'#e88bac',s:220}];
-  glowSpots.forEach(g=>{
-    const el=document.createElement('div');el.className='bg-glow';
-    el.style.cssText=`top:${g.t};left:${g.l};width:${g.s}px;height:${g.s}px;background:${g.c};`;
-    bg.appendChild(el);
-  });
 })();
 
-/* ============================================================
-   SCROLL PROGRESS RAIL
-   ============================================================ */
-(function(){
-  const fill=document.getElementById('top-rail-fill');
-  window.addEventListener('scroll',()=>{
-    const h=document.documentElement.scrollHeight-window.innerHeight;
-    const p=h>0?(window.scrollY/h)*100:0;
-    fill.style.width=p+'%';
-  },{passive:true});
-})();
-
-/* ============================================================
-   LETTER DATE (Thai Buddhist calendar)
-   ============================================================ */
+/* ── date ── */
 (function(){
   const months=['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
   const d=new Date();
   document.getElementById('letterDate').textContent=`${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()+543}`;
 })();
 
-/* ============================================================
-   SECTION NAV + INTERSECTION OBSERVER
-   ============================================================ */
-const secIds=['sec-envelope','sec-letter','sec-memories','sec-promises','sec-apology','sec-finale'];
-const secs=secIds.map(id=>document.getElementById(id));
+/* ── nav ── */
+const secs=[document.getElementById('sec1'),document.getElementById('sec2'),document.getElementById('sec3')];
 const navDots=document.querySelectorAll('.nav-dot');
-
 function scrollToSec(i){secs[i].scrollIntoView({behavior:'smooth'});}
-
-let letterStarted=false;
-let memoriesRevealed=false;
-
 const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const i=secs.indexOf(e.target);
-      navDots.forEach((d,j)=>d.classList.toggle('active',i===j));
-      if(i===1 && !letterStarted) startLetter();
-      if(i===2 && !memoriesRevealed) revealMemories();
-    }
-  });
+  entries.forEach(e=>{if(e.isIntersecting){
+    const i=secs.indexOf(e.target);
+    navDots.forEach((d,j)=>d.classList.toggle('active',i===j));
+    if(i===1&&!letterStarted)startLetter();
+  }});
 },{threshold:.4});
 secs.forEach(s=>io.observe(s));
 
-function revealMemories(){
-  memoriesRevealed=true;
-  const items=document.querySelectorAll('.tl-item');
-  items.forEach((it,i)=>setTimeout(()=>it.classList.add('show'),i*220));
-}
 
-/* ============================================================
-   SEC 1 — ENVELOPE INTERACTION
-   ============================================================ */
+/* ════════════════════════════════
+   SEC 1 — ENVELOPE
+════════════════════════════════ */
 let envOpened=false;
 const envEl=document.getElementById('env');
 const scene1=document.getElementById('envScene');
@@ -838,11 +682,13 @@ scene1.addEventListener('mousemove',function(e){
 scene1.addEventListener('mouseleave',function(){
   if(!envOpened)envEl.style.transform='';
 });
-scene1.addEventListener('click',openEnvelope);
-scene1.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')openEnvelope();});
-
-function openEnvelope(){
+scene1.addEventListener('click',function(){
   if(envOpened)return;
+
+  const bgm=document.getElementById('bgm');
+  bgm.volume=0.4;
+  bgm.play().catch(()=>{});
+ 
   envOpened=true;
   document.getElementById('envFlap').classList.add('open');
   const seal=document.getElementById('seal');
@@ -856,50 +702,51 @@ function openEnvelope(){
     scene1.style.cursor='default';
   },750);
   setTimeout(function(){scrollToSec(1);},1150);
-}
+});
 
-/* ============================================================
-   SEC 2 — LETTER TYPEWRITER
-   ============================================================ */
+/* ════════════════════════════════
+   SEC 2 — LETTER
+════════════════════════════════ */
 const letterLines = [
-  {text:'ครั้งนี้เราไม่รู้จะขอโทษยังไงแล้ว', cls:'italic-line', delay:1200},
-  {text:'คำขอโทษของเรา', delay:3600},
-  {text:'มันฟังดูไม่น่าเชื่อไปแล้ว', delay:6600},
-  {text:'', cls:'space', delay:9200},
+  {text:'ครั้งนี้เราไม่รู้จะขอโทษยังไงแล้ว', cls:'italic-line', delay:1500},
+  {text:'คำขอโทษของเรา', delay:4000},
+  {text:'มันฟังดูไม่น่าเชื่อไปแล้ว', delay:7000},
+  {text:'', cls:'space', delay:10000},
 
-  {text:'ที่ผ่านมา เราพูดขอโทษ แต่เราก็ยังทำให้นุสเสียใจซ้ำๆ', delay:11800},
-  {text:'เรายังต้องปรับปรุงตัวอีกเยอะ', delay:15600},
-  {text:'เรารู้สึกผิดหวังในตัวเองมากจริง', delay:19400},
-  {text:'ที่ทำให้นุสต้องผิดหวัง จนไม่คาดหวังอะไรจากเราแล้ว', delay:23200},
-  {text:'', cls:'space', delay:27000},
+  {text:'ที่ผ่านมา เราพูดขอโทษ แต่เราก็ยังทำให้นุสเสียใจซ้ำๆ', delay:13000},
+  {text:'เรายังต้องปรับปรุงตัวอีกเยอะ', delay:17000},
+  {text:'เรารู้สึกผิดหวังในตัวเองมากจริง', delay:21000},
+  {text:'ที่ทำให้นุสต้องผิดหวัง จนไม่คาดหวังอะไรจากเราแล้ว', delay:25000},
+  {text:'', cls:'space', delay:29000},
 
-  {text:'เราปล่อยมือนุสไปแบบนั้น มันกระทบความรู้สึกของนุสมาก', delay:29600},
-  {text:'ถ้าเป็นเราคงรู้สึกแย่มากเหมือนกัน', delay:33400},
-  {text:'แต่นุสก็ยังทนกับเรา นุสทำได้ไง', delay:37200},
-  {text:'เหมือนเราเห็นแก่ตัว ไม่แคร์ความรู้สึกนุสเลย', delay:41000},
-  {text:'', cls:'space', delay:44800},
+  {text:'เราปล่อยมือนุสไปแบบนั้น มันกระทบความรู้สึกของนุสมาก', delay:32000},
+  {text:'ถ้าเป็นเราคงรู้สึกแย่มากเหมือนกัน', delay:36000},
+  {text:'แต่นุสก็ยังทนกับเรา นุสทำได้ไง', delay:40000},
+  {text:'เหมือนเราเห็นแก่ตัว ไม่แคร์ความรู้สึกนุสเลย', delay:44000},
+  {text:'', cls:'space', delay:48000},
 
-  {text:'นุสดีมากๆ', delay:47400},
-  {text:'ดีจนบางทีเรายังคิดเลยว่า', delay:50200},
-  {text:'ทำไมผู้หญิงดี ๆ แบบนุสต้องมาเจอคนแบบเรา', delay:53800},
-  {text:'ที่ผ่านมาเรายังไม่ดีพอ', delay:57600},
-  {text:'แต่เราก็อยากเป็นแฟนที่ดีให้กับนุสจริง ๆ', delay:61000},
-  {text:'', cls:'space', delay:64800},
+  {text:'นุสดีมากๆ', delay:51000},
+  {text:'ดีจนบางทีเรายังคิดเลยว่า', delay:54000},
+  {text:'ทำไมผู้หญิงดี ๆ แบบนุสต้องมาเจอคนแบบเรา', delay:58000},
+  {text:'ที่ผ่านมาเรายังไม่ดีพอ', delay:62000},
+  {text:'แต่เราก็อยากเป็นแฟนที่ดีให้กับนุสจริง ๆ', delay:66000},
+  {text:'', cls:'space', delay:70000},
 
-  {text:'ต่อจากนี้ นุสไม่ต้องให้อภัยเราก็ได้', delay:67400},
-  {text:'แต่เราจะพยายามทำให้นุสเห็นว่า', delay:71000},
-  {text:'เราจะไม่เป็นคนเดิมอีก', delay:74600},
-  {text:'เพราะนุสทั้งนั้นที่ทำให้เราดีขึ้น', delay:78200},
-  {text:'ขอบคุณนะ', cls:'italic-line', delay:81800},
-  {text:'', cls:'space', delay:85400},
+  {text:'ต่อจากนี้ นุสไม่ต้องให้อภัยเราก็ได้', delay:73000},
+  {text:'แต่เราจะพยายามทำให้นุสเห็นว่า', delay:77000},
+  {text:'เราจะไม่เป็นคนเดิมอีก', delay:81000},
+  {text:'เพราะนุสทั้งนั้นที่ทำให้เราดีขึ้น', delay:85000},
+  {text:'ขอบคุณนะ', cls:'italic-line', delay:89000},
+  {text:'', cls:'space', delay:93000},
 
-  {text:'ต่อไปนี้เราจะคิดถึงความรู้สึกของนุสให้มากกว่านี้', delay:88000},
-  {text:'ก่อนที่จะทำหรือพูดอะไรออกไป', delay:91600},
-  {text:'', cls:'space', delay:95200},
+  {text:'ต่อไปนี้เราจะคิดถึงความรู้สึกของนุสให้มากกว่านี้', delay:96000},
+  {text:'ก่อนที่จะทำหรือพูดอะไรออกไป', delay:100000},
+  {text:'', cls:'space', delay:104000},
 
-  {text:'ดีกันนะ 💕', cls:'italic-line', delay:98800},
+  {text:'ดีกันนะ 💕', cls:'italic-line', delay:108000},
 ];
 
+let letterStarted=false;
 let letterTimers=[];
 let cursorEl=null;
 
@@ -938,37 +785,15 @@ function restartLetter(){
   setTimeout(()=>startLetter(),200);
 }
 
-/* ============================================================
-   SEC 4 — PROMISE CHECKLIST
-   ============================================================ */
-(function(){
-  const items=document.querySelectorAll('.p-item');
-  const fill=document.getElementById('promiseFill');
-  const count=document.getElementById('promiseCount');
-  const done=document.getElementById('promiseDone');
-  const total=items.length;
-
-  items.forEach(it=>{
-    it.addEventListener('click',()=>{
-      it.classList.toggle('checked');
-      const n=document.querySelectorAll('.p-item.checked').length;
-      fill.style.width=(n/total*100)+'%';
-      count.textContent=n+' / '+total+' ข้อ';
-      done.classList.toggle('show',n===total);
-      if(n===total)launchConfetti(28);
-    });
-  });
-})();
-
-/* ============================================================
-   SEC 5 — APOLOGY DIALOGUE
-   ============================================================ */
+/* ════════════════════════════════
+   SEC 3 — ORIGINAL
+════════════════════════════════ */
 const steps=[
   {msg:"ให้อภัยเราได้มั้ย?",lp:6,rp:6,ls:"จะชัดเจนกับนุสมากขึ้น",no:"ไม่ 😤"},
-  {msg:"ดีกันนนนนะ",lp:50,rp:50,ls:"จะไม่เล่นกับความรู้สึกของนุส",no:"ไม่ 😤"},
-  {msg:"เค้าขอโทดดด",lp:82,rp:82,ls:"จะคิดถึงใจนุสให้มากกว่านี้ก่อนทำอะไรลงไป",no:"ไม่ 😤"},
-  {msg:"ใกล้เเล้ว ขยับมาใกล้กันอีกนิด",lp:108,rp:108,ls:"อีกนิดนึงง",no:"ไม่ 😤"},
-  {msg:"กอดดดดด",lp:126,rp:126,ls:"♡",rs:"♡",no:null},
+  {msg:"ดีกันนนนนะ ",lp:44,rp:44,ls:"จะไม่เล่นกับความรู้สึกของนุส",no:"ไม่ 😤"},
+  {msg:"เค้าขอโทดดด ",lp:74,rp:74,ls:"จะคิดถึงใจนุสให้มากกว่านี้ก่อนทำอะไรลงไป",no:"ไม่ 😤"},
+  {msg:"ใกล้เเล้ว ขยับมาใกล้กันอีกนิด ",lp:100,rp:100,ls:"อีกนิดนึงง",no:"ไม่ 😤"},
+  {msg:"กอดดดดด ",lp:116,rp:116,ls:"♡",rs:"♡",no:null},
 ];
 let cur=0;
 function buildDots(){
@@ -976,13 +801,9 @@ function buildDots(){
   steps.forEach((_,i)=>{const el=document.createElement('div');el.className='step-dot'+(i===cur?' active':'');d.appendChild(el);});
 }
 function applyStep(s){
-  const cl=document.getElementById('charL'),cr=document.getElementById('charR');
-  cl.style.left=s.lp+'px';cr.style.right=s.rp+'px';
-  cl.classList.add('bounce');cr.classList.add('bounce');
-  setTimeout(()=>{cl.classList.remove('bounce');cr.classList.remove('bounce');},650);
-
+  document.getElementById('charL').style.left=s.lp+'px';
+  document.getElementById('charR').style.right=s.rp+'px';
   const sL=document.getElementById('speechL'),sR=document.getElementById('speechR');
-  sL.classList.remove('show');sR.classList.remove('show');
   sL.textContent=s.ls||'';sR.textContent=s.rs||'';
   setTimeout(()=>{sL.classList.toggle('show',!!s.ls);sR.classList.toggle('show',!!s.rs);},420);
   document.getElementById('card-msg').textContent=s.msg;
@@ -993,7 +814,7 @@ function applyStep(s){
 }
 function pressYes(){
   if(cur<steps.length-1){cur++;applyStep(steps[cur]);spawnHearts();}
-  if(cur===steps.length-1)setTimeout(()=>launchConfetti(60),700);
+  if(cur===steps.length-1)setTimeout(showFinal,900);
 }
 function pressNo(){
   const bn=document.getElementById('btn-no');
@@ -1012,100 +833,23 @@ function spawnHearts(){
   }
   setTimeout(()=>hz.innerHTML='',2200);
 }
-applyStep(steps[0]);
-
-/* ============================================================
-   CONFETTI
-   ============================================================ */
-function launchConfetti(n){
-  n=n||70;
+function showFinal(){
+  document.getElementById('icard').innerHTML=`<div class="final-card"><div class="final-big">💖</div><div class="final-title">ขอบคุณนะ</div><div class="final-sub">ต่อไปนี้จะไม่ทำให้เสียใจเเล้ว<br>เรารักนุสที่สุดเลยย</div></div>`;
+  launchConfetti();
+}
+function launchConfetti(){
   const cw=document.getElementById('confetti');
   const cols=['#f4c0d1','#ed93b1','#fbeaf0','#d4537e','#ffd6e8','#ffffff'];
-  for(let i=0;i<n;i++){
+  for(let i=0;i<80;i++){
     const c=document.createElement('div');c.className='conf';
     const s=Math.random()*8+4;
-    c.style.cssText=`width:${s}px;height:${s}px;background:${cols[~~(Math.random()*cols.length)]};left:${Math.random()*100}%;animation-duration:${Math.random()*2.5+1.5}s;animation-delay:${Math.random()*1.2}s;border-radius:${Math.random()>.4?'50%':'3px'};`;
+    c.style.cssText=`width:${s}px;height:${s}px;background:${cols[~~(Math.random()*cols.length)]};left:${Math.random()*100}%;animation-duration:${Math.random()*2.5+1.5}s;animation-delay:${Math.random()*2}s;border-radius:${Math.random()>.4?'50%':'3px'};`;
     cw.appendChild(c);
   }
-  setTimeout(()=>{cw.innerHTML='';},4200);
+  setTimeout(()=>cw.innerHTML='',5000);
 }
 
-/* ============================================================
-   AMBIENCE — soft generated pad, no external audio file needed
-   ============================================================ */
-let audioCtx=null, ambienceOn=false, ambienceNodes=[], ambienceLoop=null;
-
-function ensureCtx(){
-  if(!audioCtx){
-    const AC=window.AudioContext||window.webkitAudioContext;
-    if(AC)audioCtx=new AC();
-  }
-  return audioCtx;
-}
-
-function toggleAmbience(){
-  const btn=document.getElementById('ambience-btn');
-  const iconMute=document.getElementById('icon-mute');
-  const iconPlay=document.getElementById('icon-play');
-  const ctx=ensureCtx();
-  if(!ctx)return;
-
-  if(!ambienceOn){
-    ctx.resume && ctx.resume();
-    startAmbience(ctx);
-    ambienceOn=true;
-    btn.classList.add('playing');
-    iconMute.style.display='none';
-    iconPlay.style.display='block';
-  }else{
-    stopAmbience();
-    ambienceOn=false;
-    btn.classList.remove('playing');
-    iconMute.style.display='block';
-    iconPlay.style.display='none';
-  }
-}
-
-function startAmbience(ctx){
-  const master=ctx.createGain();
-  master.gain.value=0.0001;
-  master.connect(ctx.destination);
-  master.gain.linearRampToValueAtTime(0.06,ctx.currentTime+1.6);
-  ambienceNodes.push(master);
-
-  const notes=[261.63,329.63,392.00,440.00]; // gentle C major-ish tones
-
-  function playNote(freq,when,dur){
-    const osc=ctx.createOscillator();
-    const g=ctx.createGain();
-    osc.type='sine';
-    osc.frequency.value=freq;
-    g.gain.value=0;
-    osc.connect(g);g.connect(master);
-    g.gain.linearRampToValueAtTime(0.5,when+0.4);
-    g.gain.linearRampToValueAtTime(0,when+dur);
-    osc.start(when);osc.stop(when+dur+0.1);
-    ambienceNodes.push(osc);ambienceNodes.push(g);
-  }
-
-  let t=ctx.currentTime+0.2;
-  ambienceLoop=setInterval(()=>{
-    const now=ctx.currentTime;
-    const n=notes[~~(Math.random()*notes.length)];
-    playNote(n,now+0.05,3.4);
-  },2600);
-  // first note immediately
-  playNote(notes[0],t,3.4);
-}
-
-function stopAmbience(){
-  if(ambienceLoop){clearInterval(ambienceLoop);ambienceLoop=null;}
-  ambienceNodes.forEach(n=>{
-    try{ if(n.gain) n.gain.linearRampToValueAtTime(0,(audioCtx?audioCtx.currentTime:0)+0.4); }catch(e){}
-    try{ if(n.stop) n.stop((audioCtx?audioCtx.currentTime:0)+0.5); }catch(e){}
-  });
-  ambienceNodes=[];
-}
+applyStep(steps[0]);
 </script>
 </body>
 </html>
